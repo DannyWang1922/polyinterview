@@ -22,18 +22,23 @@
     });
   }
 
-  // 主视频
+  // 主视频：src 为空时只显示 poster 封面图（占位阶段），非空时才渲染播放器
   if (el("teaser") && c.teaser) {
-    var v = document.createElement("video");
-    v.controls = true;
-    if (c.teaser.poster) v.poster = c.teaser.poster;
-    v.setAttribute("playsinline", "");
     if (c.teaser.src) {
+      var v = document.createElement("video");
+      v.controls = true;
+      if (c.teaser.poster) v.poster = c.teaser.poster;
+      v.setAttribute("playsinline", "");
       var s = document.createElement("source");
       s.src = c.teaser.src;
       v.appendChild(s);
+      el("teaser").appendChild(v);
+    } else if (c.teaser.poster) {
+      var pimg = document.createElement("img");
+      pimg.src = c.teaser.poster;
+      pimg.alt = "Teaser video placeholder";
+      el("teaser").appendChild(pimg);
     }
-    el("teaser").appendChild(v);
   }
 
   // 方法图
