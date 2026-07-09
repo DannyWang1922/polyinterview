@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <rect width="1280" height="720" fill="#e5e7eb"/>
+  <circle cx="640" cy="360" r="70" fill="#9ca3af"/>
+  <polygon points="615,320 615,400 685,360" fill="#ffffff"/>
+  <text x="640" y="500" font-family="sans-serif" font-size="34" fill="#6b7280" text-anchor="middle">PolyInterview — Teaser Video Placeholder</text>
+</svg>
