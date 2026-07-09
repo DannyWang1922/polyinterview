@@ -17,6 +17,7 @@
       var a = document.createElement("a");
       a.className = "badge";
       a.href = b.url || "#";
+      if (b.color) a.style.background = b.color;
       a.textContent = (b.icon ? b.icon + " " : "") + (b.label || "");
       el("badges").appendChild(a);
     });

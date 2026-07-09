@@ -48,9 +48,6 @@ body {
   transition: transform 0.1s ease, opacity 0.1s ease;
 }
 .badge:hover { opacity: 0.9; transform: translateY(-1px); }
-.badge:nth-child(2) { background: #374151; }
-.badge:nth-child(3) { background: #ef4444; }
-.badge:nth-child(4) { background: #0ea5e9; }
 
 .note {
   text-align: center;

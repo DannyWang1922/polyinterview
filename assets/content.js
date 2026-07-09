@@ -2,11 +2,12 @@
 window.SITE_CONTENT = {
   title:
     "PolyInterview: An LLM-based Personalized Multi-Round Interview Simulation and Evaluation System",
+  // 每个按钮的 color 可选；不写则用默认蓝色。增删/重排按钮只改这里即可。
   badges: [
-    { icon: "📄", label: "Paper", url: "#" },
-    { icon: "⭐", label: "GitHub", url: "#" },
-    { icon: "🚀", label: "Online Demo", url: "#" },
-    { icon: "📺", label: "Video", url: "#" },
+    { icon: "📄", label: "Paper", url: "#", color: "#3b82f6" },
+    { icon: "⭐", label: "GitHub", url: "#", color: "#374151" },
+    { icon: "🚀", label: "Online Demo", url: "#", color: "#ef4444" },
+    { icon: "📺", label: "Video", url: "#", color: "#0ea5e9" },
   ],
   note:
     "[Note: The online demo runs on limited resources and may respond slowly under load. Please be patient.]",
