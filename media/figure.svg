@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
-  <rect width="1200" height="500" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
-  <text x="600" y="250" font-family="sans-serif" font-size="36" fill="#9ca3af" text-anchor="middle">Method Figure Placeholder</text>
-  <text x="600" y="300" font-family="sans-serif" font-size="20" fill="#b0b5bd" text-anchor="middle">Replace media/figure.svg with the real pipeline diagram</text>
-</svg>

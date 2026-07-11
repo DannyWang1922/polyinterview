@@ -20,9 +20,10 @@ python3 -m http.server 8000
 - `badges` — 顶部按钮数组，每项 `{ icon, label, url, color }`。`url` 填真实链接；`color` 可选（不填用默认蓝色）。增删/重排按钮只改这个数组即可，无需动 CSS。
 - `note` — 标题下方备注（不需要可设为空字符串）
 - `teaser.src` — 主视频地址（填入后渲染播放器；为空则只显示 `teaser.poster` 封面图）
-- `figure.src` — 方法流程图（替换 `media/figure.svg`，或改成 png/jpg 路径）
+- `workflow` — 工作流总览图 `{ src, alt, caption }`（视频下方那张大图）
 - `abstract` — 摘要正文
-- `examples` — 每个元素的 `src` 指向一个可嵌入页面（本地 demo 页、或 YouTube/Bilibili 的 embed 链接）
+- `figure` — 方法流程图 `{ src, alt, caption }`
+- `examples` — UI 截图走查数组，每项 `{ src, caption }`；`src` 是图片路径，`caption` 是该截图的说明
 
 媒体文件放在 `media/` 目录，替换同名文件或改 `content.js` 里的路径即可。
 
@@ -35,13 +36,13 @@ badges: [
   { icon: "⭐", label: "GitHub", url: "https://github.com/you/polyinterview", color: "#374151" },
 ],
 
-// 主视频：本地 mp4
-teaser: { poster: "media/teaser-poster.svg", src: "media/teaser.mp4" },
+// 主视频：本地 mp4 + 封面
+teaser: { poster: "media/teaser-poster.jpg", src: "media/teaser.mp4" },
 
-// Examples：嵌入 YouTube / Bilibili
+// Examples：截图 + 说明
 examples: [
-  { src: "https://www.youtube.com/embed/VIDEO_ID" },
-  { src: "https://player.bilibili.com/player.html?bvid=BVXXXX" },
+  { src: "media/ui/setup.png", caption: "Personalized setup ..." },
+  { src: "media/ui/live.png",  caption: "Immersive live interview ..." },
 ],
 ```
 
