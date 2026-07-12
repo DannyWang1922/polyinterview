@@ -49,6 +49,25 @@ body {
 }
 .badge:hover { opacity: 0.9; transform: translateY(-1px); }
 
+/* 多平台徽章：label( 品牌色内联图标 ) */
+.badge-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 1.5rem;
+  font-weight: 450;
+  line-height: 1;
+  color: var(--fg);
+}
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+.video-link:hover { opacity: 0.85; transform: translateY(-1px); }
+.video-link svg { width: 1em; height: 1em; }
+
 .note {
   text-align: center;
   color: var(--muted);

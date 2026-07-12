@@ -27,26 +27,55 @@
   // 备注
   if (el("note")) el("note").textContent = c.note || "";
 
+  // 普通徽章：emoji + 文字的药丸链接
+  function makeBadge(b) {
+    var a = document.createElement("a");
+    a.className = "badge";
+    a.href = b.url || "#";
+    if (b.color) a.style.background = b.color;
+    a.textContent = (b.icon ? b.icon + " " : "") + (b.label || "");
+    if (b.alert) {
+      // 带 alert 的徽章：点击弹提示框而不跳转
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.alert(b.alert);
+      });
+    } else if (b.url && b.url !== "#") {
+      // 真实外链：新标签页打开
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    }
+    return a;
+  }
+
   // 徽章按钮
   if (el("badges") && Array.isArray(c.badges)) {
     c.badges.forEach(function (b) {
-      var a = document.createElement("a");
-      a.className = "badge";
-      a.href = b.url || "#";
-      if (b.color) a.style.background = b.color;
-      a.textContent = (b.icon ? b.icon + " " : "") + (b.label || "");
-      // 带 alert 的徽章：点击弹提示框而不跳转
-      if (b.alert) {
-        a.addEventListener("click", function (e) {
-          e.preventDefault();
-          window.alert(b.alert);
+      // 多平台徽章：渲染为 label: 品牌色图标 品牌色图标，图标可点跳转
+      if (Array.isArray(b.platforms)) {
+        var lbl = document.createElement("span");
+        lbl.className = "badge-label";
+        lbl.appendChild(document.createTextNode((b.label || "") + ":"));
+        b.platforms.forEach(function (p) {
+          var link = document.createElement("a");
+          link.className = "video-link";
+          link.href = p.url || "#";
+          if (p.color) link.style.color = p.color;
+          if (p.title) {
+            link.title = p.title;
+            link.setAttribute("aria-label", p.title);
+          }
+          if (p.iconSvg) link.innerHTML = p.iconSvg;
+          if (p.url && p.url !== "#") {
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+          }
+          lbl.appendChild(link);
         });
-      } else if (b.url && b.url !== "#") {
-        // 真实外链：新标签页打开
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
+        el("badges").appendChild(lbl);
+      } else {
+        el("badges").appendChild(makeBadge(b));
       }
-      el("badges").appendChild(a);
     });
   }
 

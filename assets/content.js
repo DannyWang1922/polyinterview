@@ -5,10 +5,31 @@ window.SITE_CONTENT = {
     "PolyInterview: An LLM-based Platform for Immersive Mock Interview<br>Practice with Comprehensive Multimodal Assessment",
 
   // 每个按钮的 color 可选；不写则用默认蓝色。链接待定，先占位为 "#"。
+  // 普通徽章：{ icon, label, url, color, alert? }，icon 为 emoji 文字。
+  // 多平台徽章：带 platforms 数组时，渲染为 label: 图标 图标，
+  //   每个平台 { title, url, color, iconSvg } 是冒号后的品牌色内联图标（iconSvg 用 fill=currentColor）。
   badges: [
     { icon: "📄", label: "Paper", url: "#", color: "#3b82f6", alert: "The paper is under review and will be available for download after publication." },
     { icon: "🚀", label: "Live System", url: "https://polyinterview.comp.polyu.edu.hk/login", color: "#ef4444" },
-    { icon: "📺", label: "Video", url: "https://www.bilibili.com/video/BV1f7Nc67Ete/", color: "#0ea5e9" },
+    {
+      label: "Video",
+      platforms: [
+        {
+          title: "Bilibili",
+          url: "https://www.bilibili.com/video/BV1f7Nc67Ete/",
+          color: "#00aeec",
+          iconSvg:
+            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.746v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.246v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.17L5.777 4.854a1.25 1.25 0 1 1 1.768-1.768l2.652 2.652c.079.079.145.164.198.254h3.21c.053-.09.12-.175.198-.254l2.652-2.652a1.25 1.25 0 0 1 1.768 0zM5.75 8.496a1.25 1.25 0 0 0-1.25 1.25v7.5a1.25 1.25 0 0 0 1.25 1.25h12.5a1.25 1.25 0 0 0 1.25-1.25v-7.5a1.25 1.25 0 0 0-1.25-1.25zm2.5 3.75a1.25 1.25 0 0 1 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25a1.25 1.25 0 0 1 1.25-1.25zm7.5 0a1.25 1.25 0 0 1 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25a1.25 1.25 0 0 1 1.25-1.25z"/></svg>',
+        },
+        {
+          title: "YouTube",
+          url: "https://youtu.be/SjpDgyRym64",
+          color: "#ff0000",
+          iconSvg:
+            '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+        },
+      ],
+    },
   ],
   note: "",
 

@@ -17,7 +17,7 @@ python3 -m http.server 8000
 绝大多数内容只需编辑一个文件: **`assets/content.js`**
 
 - `title` — 论文标题
-- `badges` — 顶部按钮数组，每项 `{ icon, label, url, color }`。`url` 填真实链接；`color` 可选（不填用默认蓝色）。增删/重排按钮只改这个数组即可，无需动 CSS。
+- `badges` — 顶部按钮数组，每项 `{ icon, label, url, color }`。`url` 填真实链接；`color` 可选（不填用默认蓝色）。增删/重排按钮只改这个数组即可，无需动 CSS。若某一项带 `platforms` 数组（如 Video 同时在 B 站/YouTube 上线），则渲染为 `label: 图标 图标` 的形式：`label` 为放大的文字，冒号后每个平台 `{ title, url, color, iconSvg }` 是可点跳转的品牌色内联图标（`iconSvg` 用 `fill="currentColor"`，颜色由 `color` 控制）。
 - `note` — 标题下方备注（不需要可设为空字符串）
 - `teaser.src` — 主视频地址（填入后渲染播放器；为空则只显示 `teaser.poster` 封面图）
 - `workflow` — 工作流总览图 `{ src, alt, caption }`（视频下方那张大图）
