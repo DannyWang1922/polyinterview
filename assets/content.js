@@ -9,8 +9,8 @@ window.SITE_CONTENT = {
   // 多平台徽章：带 platforms 数组时，渲染为 label: 图标 图标，
   //   每个平台 { title, url, color, iconSvg } 是冒号后的品牌色内联图标（iconSvg 用 fill=currentColor）。
   badges: [
-    { icon: "📄", label: "Paper", url: "#", color: "#3b82f6", alert: "The paper is under review and will be available for download after publication." },
-    { icon: "🚀", label: "Live System", url: "https://polyinterview.comp.polyu.edu.hk/login", color: "#ef4444" },
+    { icon: "📄", label: "Paper", url: "https://arxiv.org/abs/2607.10310", color: "#3b82f6" },
+    { icon: "🚀", label: "Live System", url: "https://polyinterview.comp.polyu.edu.hk/polyinterview/login", color: "#ef4444" },
     {
       label: "Video",
       platforms: [
