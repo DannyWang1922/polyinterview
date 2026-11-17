@@ -1,32 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PolyInterview: an LLM-based personalized multi-round interview simulation and evaluation system." />
-  <title>PolyInterview</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233b82f6'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EP%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="assets/style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="PolyInterview personalizes job interview practice with a digital interviewer, adaptive follow-up questions, and feedback on spoken answers and delivery.">
+<title>PolyInterview: A Multi-Agent Platform for Immersive and Personalized Job Interview Practice</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233b82f6'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/project-page.css">
 </head>
-<body>
-  <main class="container">
-    <h1 id="title"></h1>
-    <nav id="badges" class="badges"></nav>
-    <p id="note" class="note"></p>
-    <hr />
-    <section id="teaser" class="media-block"></section>
-    <section id="workflow" class="media-block"></section>
-    <hr />
-    <h3 class="section-title">Introduction</h3>
-    <p id="abstract" class="abstract"></p>
-    <hr />
-    <h3 class="section-title">Method</h3>
-    <section id="figure" class="media-block"></section>
-    <hr />
-    <h3 class="section-title">Examples</h3>
-    <section id="examples" class="gallery"></section>
-  </main>
-  <script src="assets/content.js"></script>
-  <script src="assets/main.js"></script>
+<body id="top">
+<a class="skip" href="#abstract">Skip to abstract</a>
+<div class="mast"><div class="wrap mast-inner">
+<a class="brand" href="#top"><span class="brand-icon" aria-hidden="true">P</span>PolyInterview</a>
+<nav aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#design">System design</a><a href="#interface">Interface</a><a href="#evaluation">Evaluation</a></nav>
+</div></div>
+<main class="wrap">
+<header>
+<h1>PolyInterview: A Multi-Agent Platform for Immersive and Personalized Job Interview Practice</h1>
+<p class="authors"><span>Zhiyuan Wen<sup>1</sup></span>, <span>Jiannong Cao<sup>1</sup></span>, <span>Kelly Chan<sup>1</sup></span>, <span>Zijian Wang<sup>1</sup></span>, <span>Chen Chen<sup>1</sup></span>, <span>Xiaoyun Liu<sup>1</sup></span>, <span>Jianing Yin<sup>1</sup></span>, <span>Zhuo Li<sup>2</sup></span></p>
+<p class="institutions"><span><sup>1</sup> The Hong Kong Polytechnic University</span><span><sup>2</sup> Chongqing University of Posts and Telecommunications</span></p>
+<div class="actions">
+<a class="pill paper" href="https://arxiv.org/abs/2607.10310" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 15h6"/></svg> arXiv preprint</a>
+<a class="pill live" href="https://polyinterview.comp.polyu.edu.hk/polyinterview/login" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="14" rx="2"/><path d="m9 21 6 0 M12 18.5V21"/></svg> Live system</a>
+<span class="video-links"><a class="youtube" href="https://youtu.be/SjpDgyRym64" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6.4c-.3-1.4-1.2-2.3-2.6-2.6-2.3-.6-6.6-.6-8.4-.6s-6.1 0-8.4.6C2.2 4.1 1.3 5 1 6.4.6 8.1.5 10.2.5 12s.1 3.9.5 5.6c.3 1.4 1.2 2.3 2.6 2.6 2.3.6 6.6.6 8.4.6s6.1 0 8.4-.6c1.4-.3 2.3-1.2 2.6-2.6.4-1.7.5-3.8.5-5.6s-.1-3.9-.5-5.6Z" fill="currentColor" stroke="none"/><path d="m10 8 6 4-6 4z" fill="white" stroke="none"/></svg> YouTube</a><a class="bilibili" href="https://www.bilibili.com/video/BV1f7Nc67Ete/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="m6 2 4 4 M18 2l-4 4 M8 11v3 M16 11v3"/></svg> Bilibili</a></span>
+</div>
+</header>
+<div class="hero">
+<a class="hero-play" id="play-demo" href="media/teaser.mp4" aria-label="Play the PolyInterview demonstration video">
+<img alt="Digital interviewer Amy and a participant in the browser interview interface" width="1374" height="395" src="media/figures/demo-poster.webp">
+<span class="play-strip"><span class="play-sign"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3 20 12 5 21z" fill="currentColor" stroke="none"/></svg></span><span>Watch the demo</span><span class="video-time">1:55</span></span>
+</a>
+<video id="demo-video" controls playsinline preload="none" hidden aria-label="PolyInterview demonstration video"></video>
+<p class="video-error" id="video-error" role="status" hidden>The embedded video could not load. Watch the demo on <a href="https://youtu.be/SjpDgyRym64">YouTube</a> or <a href="https://www.bilibili.com/video/BV1f7Nc67Ete/">Bilibili</a>.</p>
+</div>
+<section id="abstract" aria-labelledby="abstract-title">
+<h2 id="abstract-title">Abstract</h2>
+<div class="abstract-grid">
+<div class="prose">
+<p>Realistic interview practice is costly and difficult to access. PolyInterview uses the job description and an optional CV to plan a mock interview. A lip-synced digital interviewer asks questions aloud, and a follow-up agent decides when to clarify an answer or probe the candidate’s reasoning.</p>
+<p>Four assessment agents score 13 features of the candidate’s answers, speech, and nonverbal behavior. An aggregation agent combines the results in a report that uses the KSA framework to assess professional competency and STAR to guide feedback on behavioral answers.</p>
+<p>Across 83 job positions, 377 registered users took part in 2,154 sessions that generated 11,124 questions. Ten experts rated question-plan relevance at 4.80/5 and feedback actionability at 4.70/5. Thirty users rated interview realism at 4.33/5 and interaction naturalness at 3.87/5.</p>
+</div>
+<figure class="overview"><button type="button" class="figure-link" data-enlarge="Four-stage interview workflow" aria-label="Enlarge image: Four-stage interview workflow"><img loading="lazy" width="1235" height="874" src="media/figures/overview.webp" alt="An illustrated backend engineer interview moves from a CV and role description through an adaptive spoken interview to assessment and feedback."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button><figcaption><strong>Figure 1.</strong> An example interview, from a backend engineer’s CV to feedback on a spoken answer.</figcaption></figure>
+</div>
+</section>
+<section id="design" aria-labelledby="design-title">
+<h2 id="design-title">System design</h2>
+<p class="prose design-note">The planning agent matches role requirements to the candidate’s experience. The interviewer delivers each question through a digital avatar, while the follow-up agent checks the response for ambiguity, contradiction, or a detail worth exploring. Depending on the selected persona, each main question allows up to one, two, or three follow-ups.</p>
+<figure><div class="diagram"><button type="button" class="figure-link" data-enlarge="Multi-agent system design" aria-label="Enlarge image: Multi-agent system design"><img loading="lazy" width="2187" height="979" src="media/figures/architecture.webp" alt="The planning, interviewer, and follow-up agents conduct a spoken interview. Four evaluators analyze responses and an aggregation agent generates the report."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 2.</strong> Four parallel evaluators analyze the transcript, audio, and video. The aggregation agent selects relevant assessment aspects for each question and produces professional and communication competency scores.</figcaption></figure>
+</section>
+<section id="interface" aria-labelledby="interface-title">
+<h2 id="interface-title">Interface examples</h2>
+<div class="interface-layout">
+<div class="view-list" role="tablist" aria-label="Interface views" aria-orientation="vertical" hidden><button type="button" id="tab-setup" role="tab" aria-selected="false" aria-controls="view-setup">Personalized setup</button>
+<button type="button" id="tab-interview" role="tab" aria-selected="false" aria-controls="view-interview">Live interview</button>
+<button type="button" id="tab-report" role="tab" aria-selected="false" aria-controls="view-report">Overall report</button>
+<button type="button" id="tab-evaluator" role="tab" aria-selected="false" aria-controls="view-evaluator">Evaluator scores</button>
+<button type="button" id="tab-aspects" role="tab" aria-selected="false" aria-controls="view-aspects">Assessment aspects</button>
+<button type="button" id="tab-feedback" role="tab" aria-selected="false" aria-controls="view-feedback">Question-specific feedback</button></div>
+<div><div class="interface-panel" role="tabpanel" tabindex="0" id="view-setup" aria-labelledby="tab-setup"><figure><div class="panel-frame"><button type="button" class="figure-link" data-enlarge="Personalized setup" aria-label="Enlarge image: Personalized setup"><img loading="lazy" width="1092" height="1198" src="media/figures/setup.webp" alt="Setup screen with three interviewer personas, a target job, a session duration, and an optional CV upload."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 3a. Personalized setup.</strong> Choose a role, interview length, and interviewer persona. An optional CV lets the planner connect questions to the candidate’s experience.</figcaption></figure></div>
+<div class="interface-panel" role="tabpanel" tabindex="0" id="view-interview" aria-labelledby="tab-interview"><figure><div class="panel-frame"><button type="button" class="figure-link" data-enlarge="Live interview" aria-label="Enlarge image: Live interview"><img loading="lazy" width="1374" height="816" src="media/figures/interview.webp" alt="A digital interviewer and a participant appear side by side in a spoken interview for an AI research assistant position."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 3b. Live interview.</strong> The interviewer speaks through a lip-synced avatar. The candidate answers aloud, and the system decides whether to ask a follow-up.</figcaption></figure></div>
+<div class="interface-panel" role="tabpanel" tabindex="0" id="view-report" aria-labelledby="tab-report"><figure><div class="panel-frame"><button type="button" class="figure-link" data-enlarge="Overall report" aria-label="Enlarge image: Overall report"><img loading="lazy" width="2048" height="1097" src="media/figures/report.webp" alt="An overall assessment report for a software engineer interview shows two competency scores, a written summary, and practice priorities."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 3c. Overall report.</strong> The report summarizes professional and communication competency scores, strengths, and priorities for practice.</figcaption></figure></div>
+<div class="interface-panel" role="tabpanel" tabindex="0" id="view-evaluator" aria-labelledby="tab-evaluator"><figure><div class="panel-frame"><button type="button" class="figure-link" data-enlarge="Evaluator scores" aria-label="Enlarge image: Evaluator scores"><img loading="lazy" width="772" height="696" src="media/figures/evaluator.webp" alt="A radar chart shows professional performance, way of expression, oral expression, and nonverbal behavior."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 3d. Evaluator scores.</strong> The four evaluators summarize performance across answer content, expression, vocal delivery, and nonverbal behavior.</figcaption></figure></div>
+<div class="interface-panel" role="tabpanel" tabindex="0" id="view-aspects" aria-labelledby="tab-aspects"><figure><div class="panel-frame"><button type="button" class="figure-link" data-enlarge="Assessment aspects" aria-label="Enlarge image: Assessment aspects"><img loading="lazy" width="848" height="768" src="media/figures/aspects.webp" alt="A radar chart breaks down performance across aspects such as applied mental skills, communication, and leadership."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 3e. Assessment aspects.</strong> The aspect profile shows how the candidate performed on the dimensions assessed during an interview.</figcaption></figure></div>
+<div class="interface-panel" role="tabpanel" tabindex="0" id="view-feedback" aria-labelledby="tab-feedback"><figure><div class="panel-frame"><button type="button" class="figure-link" data-enlarge="Question-specific feedback" aria-label="Enlarge image: Question-specific feedback"><img loading="lazy" width="1856" height="1234" src="media/figures/feedback.webp" alt="A tutoring interview question, the candidate’s response, and advice to name the coding problem, the first diagnostic step, and the result."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button></div><figcaption><strong>Figure 3f. Question-specific feedback.</strong> In this tutoring example, the report asks the candidate to identify the coding problem, the first diagnostic step, and the result. The transcript lets the candidate check the suggestion against their own words.</figcaption></figure></div></div>
+</div>
+</section>
+<section id="evaluation" aria-labelledby="eval-title">
+<h2 id="eval-title">Usage and evaluation</h2>
+<p class="section-note">Platform usage from 18 March to 12 November 2026.</p>
+<dl class="metric-strip">
+<div class="metric"><dt>377</dt><dd>Registered users</dd></div>
+<div class="metric"><dt>2,154</dt><dd>Interview sessions</dd></div>
+<div class="metric"><dt>11,124</dt><dd>Main and follow-up questions</dd></div>
+<div class="metric"><dt>83</dt><dd>Job positions</dd></div>
+</dl>
+<div class="evaluation-grid">
+<div><h3>What questions target</h3>
+<figure class="coverage"><button type="button" class="figure-link" data-enlarge="Aspect tags of generated main questions" aria-label="Enlarge image: Aspect tags of generated main questions"><img loading="lazy" width="1478" height="1003" src="media/figures/coverage.webp" alt="Job knowledge 47.1%, applied mental skills 36.0%, general intelligence 34.8%, communication 32.5%, work experience 28.3%, creativity 16.8%, education and training 16.6%, interpersonal skills 10.3%, leadership 3.6%, and persuasiveness 2.6%."><span class="expand" aria-hidden="true"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5 M4 4l6 6 M15 20h5v-5 M20 20l-6-6"/></svg></span></button><figcaption><strong>Figure 4.</strong> Share of generated main questions tagged with each assessment aspect. A main question can carry multiple tags.</figcaption></figure>
+</div>
+<div>
+<div class="rater"><h3>Expert review</h3><p class="data-label">Ten experts rated four plans, four answer–follow-up pairs, and four reports. Mean ratings are out of five.</p>
+<table class="results" aria-label="Mean expert ratings out of five"><tbody>
+<tr><th scope="row">Question plans matched the role</th><td>4.80</td></tr>
+<tr><th scope="row">Follow-ups addressed the answer</th><td>4.65</td></tr>
+<tr><th scope="row">Follow-ups probed the reasoning</th><td>3.13</td></tr>
+<tr><th scope="row">Feedback gave actionable advice</th><td>4.70</td></tr>
+</tbody></table></div>
+<div class="rater"><h3>User feedback</h3><p class="data-label">Thirty users completed a post-interview survey. Mean ratings are out of five.</p>
+<table class="results" aria-label="Mean user ratings out of five"><tbody>
+<tr><th scope="row">Realism of the interview process</th><td>4.33</td></tr>
+<tr><th scope="row">Naturalness of the interaction</th><td>3.87</td></tr>
+</tbody></table></div>
+</div></div>
+</section>
+<section id="data" aria-labelledby="data-title"><h2 id="data-title">Data and consent</h2>
+<p>PolyInterview is a free, noncommercial prototype for interview practice. Users consent to anonymized analysis of their interview records. The platform stores CVs and interview recordings on campus servers with encryption and account-based access controls. Users can delete their data at any time. Reports are for practice only and play no role in hiring decisions.</p>
+</section>
+</main>
+<div class="wrap footer"><span>PolyInterview</span><a href="#top">Back to top ↑</a></div>
+<dialog id="image-viewer" aria-labelledby="viewer-caption"><div class="dialog-head"><span id="viewer-caption"></span><form method="dialog"><button>Close</button></form></div><img id="viewer-image" alt=""></dialog>
+<script src="assets/project-page.js"></script>
 </body>
 </html>
